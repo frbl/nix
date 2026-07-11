@@ -80,6 +80,8 @@
 
 
     sessionVariables = {
+      DOCKER_HOST = "unix:///run/user/1000/docker.sock";
+
       # No telemetry on Azure
       FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT = "true";
 

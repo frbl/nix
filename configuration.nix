@@ -25,9 +25,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Enable docker
+  # Enable rootless (user-mode) docker only
   virtualisation.docker = {
-    enable = true;
+    enable = false;
     rootless = {
       enable = true;
       setSocketVariable = true;
@@ -62,7 +62,7 @@
   users.users."frbl" = {
     isNormalUser = true;
     description = "Frank Blaauw";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
 
