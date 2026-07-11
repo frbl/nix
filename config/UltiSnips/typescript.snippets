@@ -1,0 +1,43 @@
+# General
+snippet init "init"
+import React from 'react'
+
+type Props = {
+  example?: string
+}
+
+const $1 = ({example}: Props) => (
+  <input type={type} id={id} name={name} />
+)
+
+export default $1
+endsnippet
+
+snippet con "Logging"
+import consola from 'consola'
+endsnippet
+
+snippet rl "Logging"
+consola.info($0);
+endsnippet
+
+snippet cl "Logging"
+console.log($0);
+endsnippet
+
+snippet pdb "Debugger"
+debugger;
+endsnippet
+
+snippet desc "describe"
+describe('$1', () => {
+  $2
+});
+endsnippet
+
+snippet it "it"
+it('it should $1', () => {
+  $2
+});
+endsnippet
+

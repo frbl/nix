@@ -1,0 +1,61 @@
+conky.config = {
+    alignment = 'bottom_left',
+    background = true,
+    border_width = 5,
+    color0 = 0xffffff,
+    color1 = 0xFCAF3E,  -- yellow
+    color2 = 0x2a2a2a,  -- brown
+    color3 = 0xa82553,  -- pink
+    color4 = 0x5e1014,  -- bordeaux
+    color5 = 0x64574e,  -- brown
+    color6 = 0x2a2a2a,  -- grey
+    color7 = 0x8888CC,
+    color8 = 0x9d9c61,  -- yellow-grey
+    color9 = 0x525276,  -- blue-grey
+    cpu_avg_samples = 2,
+    default_color = 'ffffff',
+    default_outline_color = '000000',
+    default_shade_color = '000000',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = false,
+    draw_outline = false,
+    draw_shades = false,
+    gap_x = 60,
+    gap_y = 50,
+    max_user_text = 10000,
+    maximum_width = 700,
+    minimum_size = 150,
+    net_avg_samples = 2,
+    no_buffers = true,
+    override_utf8_locale = true,
+    out_to_wayland = true,
+    out_to_x = false,
+    own_window = true,
+    own_window_colour = '000000',
+    own_window_hints = 'undecorated,skip_taskbar,skip_pager',
+    own_window_transparent = true,
+    own_window_type = 'desktop',
+    pad_percents = 2,
+    short_units = true,
+    stippled_borders = 3,
+    text_buffer_size = 8000,
+    total_run_times = 0,
+    update_interval = 2.0,
+    uppercase = false,
+    use_spacer = 'right',
+    use_xft = false,
+    font = 'FreeSans:size=9',
+}
+
+conky.text = [[
+${color ffffff}${font ZegoeLight-U:pixelsize=40}${time %H:%M}${font}
+${voffset 4}${hr 1}${voffset 4}
+${color ffffff}${font ZegoeLight-U:pixelsize=15}${time %A}${font}
+${color ffffff}${font ZegoeLight-U:pixelsize=15}${time %B %d, %Y}${font}
+${voffset 8}${font sans-serif:normal:size=8}RAM
+${membar 3,112}
+CPU (${hwmon 4 temp 1}°C)
+${cpubar 3,112}
+${battery}
+]]

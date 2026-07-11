@@ -1,0 +1,75 @@
+# General
+snippet init "init"
+import {FC, ReactElement} from 'react'
+//import {classnames} from 'classnames'
+
+export interface $1Props {
+}
+
+const $1: FC<$1Props> = ({}): ReactElement => {
+  return (<></>)
+}
+$1.defaultProps = {
+}
+export default $1
+endsnippet
+
+snippet con "Logging"
+import consola from 'consola'
+endsnippet
+
+snippet rl "Logging"
+consola.info($0);
+endsnippet
+
+snippet cl "Logging"
+console.log($0);
+endsnippet
+
+snippet pdb "Debugger"
+debugger;
+endsnippet
+
+snippet desc "describe"
+describe('$1', () => {
+  $2
+});
+endsnippet
+
+snippet it "it"
+it('it should $1', () => {
+  $2
+});
+endsnippet
+
+snippet inithook "inithook"
+// import { useState } from 'react'
+
+export interface I$1Hook {
+}
+
+const use$1Hook = (): I$1Hook => {
+
+  return {
+  }
+}
+
+export default use$1Hook
+
+endsnippet
+
+snippet initstory "initstory"
+import $1 from './';
+
+const story = {
+  component: $1,
+  title: 'Atomic/$2/$1',
+};
+export default story;
+
+const Template = args => <$1 {...args}/>;
+
+export const Primary = Template.bind({});
+Primary.args = { };
+
+endsnippet

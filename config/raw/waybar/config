@@ -1,0 +1,34 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": [],
+    "modules-right": ["network", "battery", "clock"],
+
+    "sway/workspaces": {
+        "disable-scroll": true
+    },
+
+    "network": {
+        "interface": "wlp0s20f3",
+        "format-wifi": "{essid} ({signalStrength}%) {ipaddr}",
+        "format-ethernet": "{ipaddr}",
+        "format-disconnected": "disconnected",
+        "on-click": "foot nmtui"
+    },
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ^",
+        "format-icons": ["⌄", "⌄", "⌄", "⌄", "-"],
+        "states": {
+            "warning": 11
+        }
+    },
+
+    "clock": {
+        "format": "{:%y%m%d %H:%M:%S}",
+        "interval": 1
+    }
+}

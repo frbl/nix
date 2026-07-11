@@ -1,0 +1,42 @@
+* {
+    font-family: "System San Francisco Display", sans-serif;
+    font-size: 10px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #f3f4f5;
+}
+
+#workspaces button {
+    color: #676E7D;
+    padding: 0 6px;
+    background: transparent;
+}
+
+#workspaces button.focused {
+    color: #00B1E9;
+}
+
+#workspaces button.urgent {
+    color: #E53935;
+}
+
+#clock,
+#battery,
+#network {
+    padding: 0 10px;
+    color: #f3f4f5;
+}
+
+#battery.warning {
+    color: #E53935;
+}
+
+#mode {
+    padding: 0 6px;
+    color: #E53935;
+}
