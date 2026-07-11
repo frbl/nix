@@ -66,6 +66,8 @@
     packages = with pkgs; [];
   };
 
+  security.pam.services.swaylock = {};
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
