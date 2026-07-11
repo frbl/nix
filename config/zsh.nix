@@ -95,7 +95,7 @@
       GIT_PROMPT_SYMBOL="*";
 
       XCURSOR_THEME = "Adwaita";
-      XCURSOR_SIZE = "48";
+      XCURSOR_SIZE = "24";
     };
     
 
