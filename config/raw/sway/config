@@ -147,9 +147,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Screen lock (replaces xautolock)
-exec swayidle -w timeout 300 '~/.bin/lock' before-sleep '~/.bin/lock'
-
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec /home/frbl/.bin/lock, mode "default"
@@ -189,6 +186,12 @@ exec ~/.bin/swaywall
 
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DBUS_SESSION_BUS_ADDRESS XCURSOR_THEME XCURSOR_SIZE
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DBUS_SESSION_BUS_ADDRESS XCURSOR_THEME XCURSOR_SIZE
+
+# Idle / lock
+exec swayidle -w \
+	timeout 300 'loginctl lock-session $XDG_SESSION_ID' \
+	before-sleep 'loginctl lock-session $XDG_SESSION_ID' \
+	lock 'playerctl -a pause && swaylock'
 
 exec_always nm-applet --indicator
 exec nohup flameshot &

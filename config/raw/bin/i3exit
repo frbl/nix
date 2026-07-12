@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # From:
 # https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
 case "$1" in
@@ -9,10 +9,12 @@ case "$1" in
         swaymsg exit
         ;;
     suspend)
-        swaylock -f && systemctl suspend
+        swaylock -f
+        systemctl suspend
         ;;
     hibernate)
-        swaylock -f && systemctl hibernate
+        swaylock -f
+        systemctl hibernate
         ;;
     reboot)
         systemctl reboot
