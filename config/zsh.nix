@@ -14,7 +14,7 @@
       switch = "setxkbmap -option caps:escape";
       update = "home-manager switch --max-jobs 8";
       updatee = "sudo nixos-rebuild switch --flake ~/nix/; update";
-      upgrade = "cd ~/nix && nix flake update; update";
+      upgrade = "cd ~/nix && nix flake update; updatee";
       alacritty = "nixGL alacritty";
       vi = "nvim";
       vim = "nvim";
@@ -207,7 +207,6 @@
           . "$SSH_ENV" > /dev/null
           ssh-add;
       }
-
 
       pronkridder-screen() {
         xrandr --output DP-1 --off

@@ -330,6 +330,19 @@
   home.file.".bin".source = ./config/raw/bin;
   home.file."Wallpapers".source = ./config/raw/wallpapers;
 
+  systemd.user.services.batsignal = {
+    Unit = {
+      Description = "Battery level notification daemon";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.batsignal}/bin/batsignal -w 20 -c 10 -d 5 -f 99";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
+  };
+
   systemd.user.services.clear-downloads = {
     Unit.Description = "Clear Downloads folder on boot and shutdown";
     Service = {
