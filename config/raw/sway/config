@@ -193,6 +193,7 @@ exec swayidle -w \
 	before-sleep 'loginctl lock-session $XDG_SESSION_ID' \
 	lock 'playerctl -a pause && swaylock'
 
+exec mako
 exec_always nm-applet --indicator
 exec nohup flameshot &
 for_window [app_id="conky"] floating enable, border none, sticky enable

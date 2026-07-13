@@ -2,6 +2,8 @@
 while :; do
     bat=$(cat /sys/class/power_supply/BAT0/capacity)
     status=$(cat /sys/class/power_supply/BAT0/status)
-    echo "$(date +'%y%m%d %H:%M:%S') | $bat% ($status)"
+    wifi=$(iwgetid -r 2>/dev/null || echo "")
+    wifi_str=${wifi:+" $wifi |"}
+    echo "$(date +'%y%m%d %H:%M:%S') |$wifi_str $bat% ($status)"
     sleep 5
 done

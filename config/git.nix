@@ -33,8 +33,9 @@
           editor = "nvim";
           #excludesfile = "/home/frbl/.gitignore_global";
         };
-        push = { 
-          default = "current"; 
+        push = {
+          default = "current";
+          autoSetupRemote = true;
         };
         pull = { 
           rebase = false; 

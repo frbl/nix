@@ -268,6 +268,7 @@
     swayidle
     swaylock
     waybar
+    mako
     foot
   ];
 

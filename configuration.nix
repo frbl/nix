@@ -85,7 +85,17 @@
     wrapperFeatures.gtk = true;
   };
 
-  # List services that you want to enable:
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "suspend";
+  };
+
+  # Prevent USB devices from waking the system after lid-close suspend
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{power/wakeup}="disabled"
+  '';
+
+# List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
