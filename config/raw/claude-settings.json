@@ -1,5 +1,7 @@
 {
   "theme": "dark",
   "tui": "fullscreen",
-  "autoMode": true
+  "permissions": {
+    "defaultMode": "auto"
+  }
 }
