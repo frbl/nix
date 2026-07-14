@@ -12,7 +12,7 @@
 
     shellAliases = {
       switch = "setxkbmap -option caps:escape";
-      update = "home-manager switch --max-jobs 8";
+      update = "home-manager switch --max-jobs 8;swaymsg reload";
       updatee = "sudo nixos-rebuild switch --flake ~/nix/; update";
       upgrade = "cd ~/nix && nix flake update; updatee";
       alacritty = "nixGL alacritty";

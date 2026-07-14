@@ -71,6 +71,7 @@
 
     # Games
     gcompris
+    zeroad 
 
     swagger-codegen
 
@@ -324,6 +325,7 @@
   home.file.".config/zathura/zathurarc".source = ./config/raw/zathurarc;
   home.file.".config/kmonad/keyboard.kbd".source = ./config/raw/kmonad;
   home.file.".config/espanso/match/base.yml".source = ./config/raw/espanso.yml;
+  home.file.".config/claude/settings.json".source = ./config/raw/claude-settings.json;
   home.file.".snippets/vim/UltiSnips".source = ./config/UltiSnips;
   home.file.".git_template".source = ./config/raw/git_template;
   home.file.".tmuxinator".source = ./config/raw/tmuxinator;

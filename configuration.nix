@@ -15,6 +15,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-f34ed86f-36b7-4aa4-b36f-342edb53fe4c".device = "/dev/disk/by-uuid/f34ed86f-36b7-4aa4-b36f-342edb53fe4c";
+
+  # Use real S3 deep sleep instead of s2idle (requires BIOS: Config → Power → Sleep State → Linux)
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
   networking.hostName = "frbl-x1-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -88,22 +91,6 @@
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend";
     HandleLidSwitchExternalPower = "suspend";
-  };
-
-  # Prevent USB devices from waking the system after lid-close suspend
-  services.udev.extraRules = ''
-    ACTION=="add|change", SUBSYSTEM=="usb", ATTR{power/wakeup}="disabled"
-  '';
-
-  # Re-disable USB wakeup right before every suspend (covers already-connected devices)
-  systemd.services.disable-usb-wakeup = {
-    description = "Disable USB wakeup sources before suspend";
-    wantedBy = [ "sleep.target" ];
-    before = [ "sleep.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash -c 'for f in /sys/bus/usb/devices/*/power/wakeup; do echo disabled > \"$f\" 2>/dev/null || true; done'";
-    };
   };
 
 # List services that you want to enable:

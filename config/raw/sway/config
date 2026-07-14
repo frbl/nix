@@ -163,6 +163,9 @@ bindsym $mod+x mode "$mode_system"
 
 bindsym XF86Launch1 exec /home/frbl/.bin/i3exit suspend
 
+# Suspend on lid close (--locked so it works even when screen is locked)
+bindswitch --reload --locked lid:on exec systemctl suspend
+
 bar {
     mode hide
     hidden_state hide
@@ -191,7 +194,8 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSO
 exec swayidle -w \
 	timeout 300 'loginctl lock-session $XDG_SESSION_ID' \
 	before-sleep 'loginctl lock-session $XDG_SESSION_ID' \
-	lock 'playerctl -a pause && swaylock'
+	lock 'playerctl -a pause && swaylock' \
+	after-resume 'grep -q closed /proc/acpi/button/lid/LID/state && systemctl suspend'
 
 exec mako
 exec_always nm-applet --indicator

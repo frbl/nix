@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ps *)"
+      "Bash(ps *)",
+      "Read(//nix/store/**)",
+      "Read(//etc/systemd/**)",
+      "Read(//proc/acpi/**)",
+      "Bash(journalctl -b -1 --no-pager -g \"lid|suspend|wake|sleep|resume\")"
     ]
   }
 }
