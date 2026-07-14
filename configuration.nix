@@ -65,7 +65,7 @@
   users.users."frbl" = {
     isNormalUser = true;
     description = "Frank Blaauw";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [];
   };
 
@@ -78,6 +78,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    brightnessctl
   ];
 
   programs.zsh.enable = true;
