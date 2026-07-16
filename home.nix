@@ -31,6 +31,9 @@
     solargraph
 
 
+    # File management
+    thunar
+
     ansible
 
     # Go
@@ -362,5 +365,6 @@
     ./config/ssh.nix
     ./config/alacritty.nix
     ./config/direnv.nix
+    ./config/docker-containers.nix
   ];
 }

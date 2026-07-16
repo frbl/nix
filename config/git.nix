@@ -6,6 +6,7 @@
       key = "433A4D006D0344B08D6502FD7013901F19B263CF";
     };
     settings = {
+      push = { autoSetupRemote = true; };
       user = {
         email = "f.j.blaauw@researchable.nl";
         name = "Frank Blaauw";
