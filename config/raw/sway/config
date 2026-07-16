@@ -165,6 +165,7 @@ mode "$mode_system" {
 bindsym $mod+x mode "$mode_system"
 
 bindsym XF86Launch1 exec /home/frbl/.bin/i3exit suspend
+bindsym XF86Favorites exec /home/frbl/.bin/toggle-power-profile
 
 # Suspend on lid close (--locked so it works even when screen is locked)
 bindswitch --reload --locked lid:on exec systemctl suspend

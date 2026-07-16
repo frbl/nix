@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+current=$(powerprofilesctl get)
+
+case $current in
+  balanced)     next="performance" ;;
+  performance)  next="power-saver" ;;
+  *)            next="balanced" ;;
+esac
+
+powerprofilesctl set "$next"
+notify-send -i battery "Power profile" "$next" -t 2000

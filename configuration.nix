@@ -19,9 +19,6 @@
   # Use real S3 deep sleep instead of s2idle (requires BIOS: Config → Power → Sleep State → Linux)
   boot.kernelParams = [ "mem_sleep_default=deep" ];
 
-  # ACPI DSDT override: adds _HID "INT34BC" + fixes _STA to 0x0F on SPI1 (GSPI1 at 00:1e.3)
-  # Lenovo BIOS bug: GSPI1 is in ACPI mode but DSDT has no _HID, breaking the IVSC camera chain
-  boot.initrd.prepend = [ "${./acpi-dsdt-override.cpio}" ];
   networking.hostName = "frbl-x1-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -96,6 +93,9 @@
   # Camera (Intel IVSC via GSPI1) — blocked by missing _HID in Lenovo DSDT
   # hardware.ipu6 is wrong for this hardware; this machine uses IVSC (INTC1094/1095)
   # Requires DSDT override or BIOS fix before any camera driver will work
+
+  services.ollama.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   services.fwupd.enable = true;
 

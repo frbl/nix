@@ -258,8 +258,12 @@
     neovim
     antigravity
 
+    libnotify
+
     # AI
     claude-code
+    ollama
+    opencode
 
     # i3
     #i3lock
@@ -329,6 +333,7 @@
   home.file.".config/kmonad/keyboard.kbd".source = ./config/raw/kmonad;
   home.file.".config/espanso/match/base.yml".source = ./config/raw/espanso.yml;
   home.file.".claude/settings.json".source = ./config/raw/claude-settings.json;
+  home.file.".config/opencode/config.json".source = ./config/raw/opencode.json;
   home.file.".snippets/vim/UltiSnips".source = ./config/UltiSnips;
   home.file.".git_template".source = ./config/raw/git_template;
   home.file.".tmuxinator".source = ./config/raw/tmuxinator;
