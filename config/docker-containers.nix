@@ -17,6 +17,5 @@
       ExecStop = "${pkgs.docker}/bin/docker stop hermes-agent";
       Restart = "on-failure";
     };
-    Install.WantedBy = [ "default.target" ];
   };
 }

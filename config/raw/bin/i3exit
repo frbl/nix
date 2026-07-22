@@ -3,7 +3,7 @@
 # https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
 case "$1" in
     lock)
-        swaylock
+        swaylock -f
         ;;
     logout)
         swaymsg exit

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if systemctl --user is-active --quiet hermes-agent; then
+  systemctl --user stop hermes-agent
+  notify-send -i system-shutdown "Hermes" "Stopped" -t 2000
+else
+  systemctl --user start hermes-agent
+  notify-send -i system-run "Hermes" "Started" -t 2000
+fi

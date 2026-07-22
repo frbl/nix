@@ -1,5 +1,23 @@
 { config, pkgs, ... }:
 
+let
+  cve-lite-cli = pkgs.buildNpmPackage rec {
+    pname = "cve-lite-cli";
+    version = "1.27.0";
+    src = pkgs.fetchurl {
+      url = "https://registry.npmjs.org/cve-lite-cli/-/cve-lite-cli-${version}.tgz";
+      hash = "sha256-H/NbW4ExDpeS8QK+MTIPdsCx+IOZKZkYbGMERdlPePo=";
+    };
+    sourceRoot = "package";
+    postPatch = ''
+      cp ${./config/cve-lite-cli-lock.json} package-lock.json
+    '';
+    npmDepsHash = "sha256-DifGD7xDqKoQEVhqYg5BXrRDCFfccPfQFPUtZ1UvxNQ=";
+    dontNpmBuild = true;
+    nativeBuildInputs = [ pkgs.python3 pkgs.pkg-config pkgs.sqlite ];
+  };
+in
+
 {
 
   nixpkgs.config = {
@@ -135,6 +153,9 @@
     #flatpak
     bottles
 
+    # VPN
+    tailscale
+
     # Music
     spotify
     #downonspot
@@ -208,10 +229,14 @@
     beeper
     google-chrome
     brave
+    insync # Google drive
     #curl
     xautolock
     fzf
+    # Process / battery info
     htop
+    powertop
+
     geekbench
     cpupower-gui
     conky
@@ -261,9 +286,12 @@
     libnotify
 
     # AI
+    cve-lite-cli
     claude-code
+    gemini-cli
     ollama
     opencode
+    #opendesign
 
     # i3
     #i3lock
@@ -370,6 +398,6 @@
     ./config/ssh.nix
     ./config/alacritty.nix
     ./config/direnv.nix
-    ./config/docker-containers.nix
+    #./config/docker-containers.nix
   ];
 }

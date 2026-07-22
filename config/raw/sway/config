@@ -152,7 +152,7 @@ bindsym $mod+r mode "resize"
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec /home/frbl/.bin/lock, mode "default"
+    bindsym l exec swaylock, mode "default"
     bindsym e exec swaymsg exit, mode "default"
     bindsym s exec /home/frbl/.bin/i3exit suspend, mode "default"
     bindsym h exec /home/frbl/.bin/i3exit hibernate, mode "default"
@@ -195,11 +195,11 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CU
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DBUS_SESSION_BUS_ADDRESS XCURSOR_THEME XCURSOR_SIZE
 
 # Idle / lock
-exec swayidle -w \
-	timeout 300 'loginctl lock-session $XDG_SESSION_ID' \
-	before-sleep 'loginctl lock-session $XDG_SESSION_ID' \
-	lock 'playerctl -a pause && swaylock' \
-	after-resume 'grep -q closed /proc/acpi/button/lid/LID/state && systemctl suspend'
+exec_always pkill -x swayidle; swayidle -w \
+	timeout 300 'swaylock -f' \
+	timeout 330 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+	before-sleep 'playerctl -a pause; swaylock -f' \
+	after-resume 'swaymsg "output * dpms on"; grep -q closed /proc/acpi/button/lid/LID/state && systemctl suspend'
 
 exec mako
 exec_always nm-applet --indicator

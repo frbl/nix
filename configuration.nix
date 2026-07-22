@@ -19,6 +19,12 @@
   # Use real S3 deep sleep instead of s2idle (requires BIOS: Config → Power → Sleep State → Linux)
   boot.kernelParams = [ "mem_sleep_default=deep" ];
 
+  # ALC287 jack detection fix for ThinkPad X1 — without this the codec reports
+  # speakers as unavailable and headphone port as always-active
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=thinkpad
+  '';
+
   networking.hostName = "frbl-x1-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -93,6 +99,8 @@
   # Camera (Intel IVSC via GSPI1) — blocked by missing _HID in Lenovo DSDT
   # hardware.ipu6 is wrong for this hardware; this machine uses IVSC (INTC1094/1095)
   # Requires DSDT override or BIOS fix before any camera driver will work
+
+  services.tailscale.enable = true;
 
   services.ollama.enable = true;
   services.power-profiles-daemon.enable = true;
