@@ -155,6 +155,7 @@ in
 
     # VPN
     tailscale
+    wireguard-tools
 
     # Music
     spotify
@@ -265,6 +266,8 @@ in
     #zsh-z 
     #zsh-autosuggestions
 
+    ruff
+
     # python packages
     (python3.withPackages (p: with p; [
       regex
@@ -306,6 +309,30 @@ in
     waybar
     mako
     foot
+
+    # Hacking
+    nmap
+    amass
+    wireshark
+    netdiscover
+    bettercap
+    ettercap
+    openvas-scanner
+    nikto
+    nuclei
+
+    ## Wireless Hacking
+    aircrack-ng
+    kismet
+
+    ## Password & Exploitation
+    john
+    hashcat
+    metasploit
+
+    ## Web Vulnerabilities
+    burpsuite
+    sqlmap
   ];
 
 

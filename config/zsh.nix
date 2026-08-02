@@ -245,6 +245,14 @@
       export NIXPKGS_ALLOW_UNFREE=1
 
       export PATH=$PATH:~/.bin
+
+      venv() {
+        local dir="''${1:-.venv}"
+        if [ ! -d "$dir" ]; then
+          python3 -m venv "$dir"
+        fi
+        source "$dir/bin/activate"
+      }
     '';
 
     history = {

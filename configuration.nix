@@ -102,7 +102,17 @@
 
   services.tailscale.enable = true;
 
-  services.ollama.enable = true;
+  # Local LLM
+  services.ollama = {
+    enable = true;
+    host = "127.0.0.1";
+    port = 11434;
+    # Optional: automatically load models on startup
+    loadModels = [ 
+      "gemma4:e4b"
+    #  "llama3.2:3b" 
+    ];
+  };
   services.power-profiles-daemon.enable = true;
 
   services.fwupd.enable = true;
@@ -117,11 +127,17 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  # Firewall
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = [ "tailscale0" ];
+  };
+
+  # Virusscanner
+  services.clamav = {
+    daemon.enable = true;
+    updater.enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
