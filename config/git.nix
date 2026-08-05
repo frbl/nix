@@ -30,6 +30,7 @@
         ignore = "!git rm -r --cached .; git commit -a";
       };
       extraConfig = {
+        safe = { directory = "*"; };
         core = {
           editor = "nvim";
           #excludesfile = "/home/frbl/.gitignore_global";
