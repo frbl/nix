@@ -246,6 +246,14 @@
 
       export PATH=$PATH:~/.bin
 
+      vpn() {
+        case "$1" in
+          up)   sudo systemctl start wg-quick-wg0.service ;;
+          down) sudo systemctl stop wg-quick-wg0.service ;;
+          *)    echo "Usage: vpn up|down" ;;
+        esac
+      }
+
       venv() {
         local dir="''${1:-.venv}"
         if [ ! -d "$dir" ]; then

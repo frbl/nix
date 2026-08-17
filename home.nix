@@ -1,6 +1,21 @@
 { config, pkgs, ... }:
 
 let
+  herdr = pkgs.stdenv.mkDerivation {
+    pname = "herdr";
+    version = "0.8.0";
+    src = pkgs.fetchurl {
+      url = "https://github.com/herdrdev/herdr/releases/download/v0.8.0/herdr-linux-x86_64";
+      hash = "sha256-uHLqfkD6LLF+hXrJtisb8m23tAPGIvXS8/WzX26azSg=";
+    };
+    nativeBuildInputs = [ pkgs.autoPatchelfHook ];
+    buildInputs = [ pkgs.stdenv.cc.cc.lib ];
+    dontUnpack = true;
+    installPhase = ''
+      install -Dm755 $src $out/bin/herdr
+    '';
+  };
+
   cve-lite-cli = pkgs.buildNpmPackage rec {
     pname = "cve-lite-cli";
     version = "1.27.0";
@@ -221,6 +236,7 @@ in
 
     mr
     arandr
+    wdisplays
 
     _1password-cli
 
@@ -289,6 +305,7 @@ in
     libnotify
 
     # AI
+    herdr
     cve-lite-cli
     claude-code
     gemini-cli

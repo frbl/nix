@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    exec wdisplays
+else
+    exec env PATH="$(echo "$PATH" | tr ':' '\n' | grep -v "^${HOME}/.bin$" | tr '\n' ':')" arandr
+fi
