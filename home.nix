@@ -66,6 +66,7 @@ in
 
     # File management
     thunar
+    unzip
 
     ansible
 
@@ -78,12 +79,13 @@ in
     libX11.dev
 
     libva
-    qpdf
 
     # Signing and editing PDFs
+    qpdf
     xournalpp
     pdf-sign
     signaturepdf
+    masterpdfeditor4
 
     gettext
     #tools
@@ -116,6 +118,7 @@ in
 
     texlive.combined.scheme-full
     obsidian
+    trilium-desktop # Obsidian alternative
 
     teleport
     doctl
@@ -377,11 +380,6 @@ in
   fonts.fontconfig.enable = true;
 
   # Raw configuration files
-  #home.file.".config/nvim/init.vim".source = ./config/raw/vimrc;
-  #home.file.".config/nvim/coc-settings.json".source = ./config/raw/coc-settings.json;
-
-  #home.file.".vimrc".source = ./config/raw/vimrc;
-  #home.file.".config/nvim".source = ./config/raw/nvim;
   home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink ./config/raw/nvim;
 
   home.file.".tmux.conf".source = ./config/raw/tmux.conf;
@@ -402,6 +400,7 @@ in
   home.file.".Rprofile".source = ./config/raw/Rprofile;
   home.file.".config/xfce4/terminal/terminalrc".source = ./config/raw/xfce_terminal;
   home.file.".config/zathura/zathurarc".source = ./config/raw/zathurarc;
+  home.file.".config/Thunar/thunarrc".source = ./config/raw/thunarrc;
   home.file.".config/kmonad/keyboard.kbd".source = ./config/raw/kmonad;
   home.file.".config/espanso/match/base.yml".source = ./config/raw/espanso.yml;
   home.file.".claude/settings.json".source = ./config/raw/claude-settings.json;
@@ -426,14 +425,20 @@ in
   };
 
   systemd.user.services.clear-downloads = {
-    Unit.Description = "Clear Downloads folder on boot and shutdown";
+    Unit.Description = "Remove Downloads files older than 24 hours";
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.coreutils}/bin/rm -rf %h/Downloads/*";
-      ExecStop = "${pkgs.coreutils}/bin/rm -rf %h/Downloads/*";
-      RemainAfterExit = true;
+      ExecStart = "${pkgs.findutils}/bin/find %h/Downloads -mindepth 1 -type f -mmin +1440 -delete";
     };
-    Install.WantedBy = [ "default.target" ];
+  };
+
+  systemd.user.timers.clear-downloads = {
+    Unit.Description = "Periodically remove Downloads files older than 24 hours";
+    Timer = {
+      OnBootSec = "5min";
+      OnUnitActiveSec = "1h";
+    };
+    Install.WantedBy = [ "timers.target" ];
   };
 
   imports = [
