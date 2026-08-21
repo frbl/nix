@@ -42,7 +42,8 @@
 
 
       # Git
-      gl = "git track; git pull";
+      gl = "git pull";
+      gp = "git push";
       gv = "vim `git diff --name-only`";
       gcob = "g cob";
       gsi = "git submodule update --init --recursive -j 8";

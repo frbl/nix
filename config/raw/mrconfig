@@ -425,6 +425,9 @@ checkout = git clone "git@gitlab.com:researchable/general/test-projects/messageb
 [Workspace/researchable/general/devops/infrastructure]
 checkout = git clone "git@gitlab.com:researchable/general/devops/infrastructure.git"
 
+[Workspace/researchable/general/researchable-cluster/airflow-dags]
+checkout = git clone "git@gitlab.com:researchable/general/researchable-cluster/airflow-dags.git"
+
 
 # SDV
 [Workspace/researchable/sport-data-valley/sdv/presentation-sdv-pitch]
@@ -577,8 +580,8 @@ checkout = git clone "git@gitlab.com:researchable/projects/umo/base-frontend.git
 [Workspace/researchable/projects/umo/base-backend]
 checkout = git clone "git@gitlab.com:researchable/projects/umo/base-backend.git"
 
-[Workspace/researchable/projects/umo/nomad_job_files]
-checkout = git clone "git@github.com:frbl/umo_nomad_job_files.git"
+#[Workspace/researchable/projects/umo/nomad_job_files]
+#checkout = git clone "git@github.com:frbl/umo_nomad_job_files.git"
 
 
 # Delta Dashboard
@@ -669,8 +672,8 @@ checkout = git clone "git@gitlab.com:researchable/aukati/gem-jwt-auth.git"
 checkout = git clone "git@gitlab.com:researchable/aukati/event-driven-poc.git"
 
 ### Axtion
-[Workspace/axtion/shared/researchable/scheduler]
-checkout = git clone "git@gitlab.com:axtion/shared/researchable/scheduler.git"
+#[Workspace/axtion/shared/researchable/scheduler]
+#checkout = git clone "git@gitlab.com:axtion/shared/researchable/scheduler.git"
 
 # DeepAtlas
 #[Workspace/fieldlabs/deepatlas]

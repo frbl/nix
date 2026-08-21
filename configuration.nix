@@ -36,6 +36,17 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  systemd.services.sneeuwpop-dns = {
+    description = "Set custom DNS for Sneeuwpop WiFi connection";
+    after = [ "NetworkManager.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.networkmanager}/bin/nmcli connection modify Sneeuwpop ipv4.dns 10.0.0.10 ipv4.ignore-auto-dns yes";
+    };
+  };
+
   # Enable rootless (user-mode) docker only
   virtualisation.docker = {
     enable = false;
