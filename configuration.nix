@@ -91,10 +91,7 @@
     packages = with pkgs; [];
   };
 
-  boot.kernelModules = [ "uinput" ];
-  services.udev.extraRules = ''
-    KERNEL=="uinput", GROUP="uinput", MODE="0660"
-  '';
+  hardware.uinput.enable = true;
 
   security.pam.services.swaylock = {};
 
