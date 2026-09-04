@@ -776,3 +776,47 @@ checkout = git clone "git@gitlab.com:researchable/projects/gasunie/gasunie-hacka
 # frbl  
 [Workspace/frbl/evionix]
 checkout = git clone "git@github.com:frbl/evionix.git"
+
+# WeFitter
+[Workspace/thunderbyte/wefitter/apple-health-bridge]
+checkout = git clone "git@bitbucket.org:wefitter1/apple-health-bridge.git"
+
+[Workspace/thunderbyte/wefitter/dask_cass]
+checkout = git clone "git@bitbucket.org:wefitter1/dask_cass.git"
+
+[Workspace/thunderbyte/wefitter/flutter-sdk]
+checkout = git clone "git@bitbucket.org:wefitter1/flutter-sdk.git"
+
+[Workspace/thunderbyte/wefitter/gamification-levels]
+checkout = git clone "git@bitbucket.org:wefitter1/gamification-levels.git"
+
+[Workspace/thunderbyte/wefitter/health-connect]
+checkout = git clone "git@bitbucket.org:wefitter1/health-connect.git"
+
+[Workspace/thunderbyte/wefitter/samsung-health-data-sdk]
+checkout = git clone "git@bitbucket.org:wefitter1/samsung-health-data-sdk.git"
+
+[Workspace/thunderbyte/wefitter/samsung-sdk]
+checkout = git clone "git@bitbucket.org:wefitter1/samsung-sdk.git"
+
+[Workspace/thunderbyte/wefitter/wefitter-app]
+checkout = git clone "git@bitbucket.org:wefitter1/wefitter-app.git"
+
+[Workspace/thunderbyte/wefitter/wefitter-app-auth-backend-django]
+checkout = git clone "git@bitbucket.org:wefitter1/wefitter-app-auth-backend-django.git"
+
+[Workspace/thunderbyte/wefitter/wefitter-backend-django]
+checkout = git clone "git@bitbucket.org:wefitter1/wefitter-backend-django.git"
+
+[Workspace/thunderbyte/wefitter/wefitter-backend-django-save]
+checkout = git clone "git@bitbucket.org:wefitter1/wefitter-backend-django-save.git"
+
+[Workspace/thunderbyte/wefitter/wefitter-dashboard]
+checkout = git clone "git@bitbucket.org:wefitter1/wefitter-dashboard.git"
+
+[Workspace/thunderbyte/wefitter/wefitter-gpt]
+checkout = git clone "git@bitbucket.org:wefitter1/wefitter-gpt.git"
+
+[Workspace/thunderbyte/wefitter/wefitter-website]
+checkout = git clone "git@bitbucket.org:wefitter1/wefitter-website.git"
+

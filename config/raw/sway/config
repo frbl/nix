@@ -205,6 +205,7 @@ exec mako
 exec_always nm-applet --indicator
 exec nohup flameshot &
 for_window [app_id="conky"] floating enable, border none, sticky enable
+for_window [title="battery-warning"] floating enable, sticky enable, resize set 800 240, move position center
 exec conky
 exec powerprofilesctl set performance
 exec vmware-user

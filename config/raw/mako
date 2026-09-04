@@ -1,0 +1,16 @@
+font=System San Francisco Display 12
+default-timeout=5000
+background-color=#2f343f
+text-color=#f3f4f5
+border-color=#00B1E9
+
+[app-name=Slack]
+default-timeout=5000
+
+[urgency=critical]
+background-color=#cc0000
+text-color=#ffffff
+border-color=#ff0000
+font=System San Francisco Display 16
+default-timeout=0
+anchor=top-center

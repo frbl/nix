@@ -20,6 +20,9 @@
   # Use real S3 deep sleep instead of s2idle (requires BIOS: Config → Power → Sleep State → Linux)
   boot.kernelParams = [ "mem_sleep_default=deep" ];
 
+  # SOF DSP firmware for internal speakers (SoundWire codec via SOF, not HDA bus)
+  hardware.firmware = with pkgs; [ sof-firmware ];
+
   # ALC287 jack detection fix for ThinkPad X1 — without this the codec reports
   # speakers as unavailable and headphone port as always-active
   boot.extraModprobeConfig = ''
@@ -84,9 +87,14 @@
   users.users."frbl" = {
     isNormalUser = true;
     description = "Frank Blaauw";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "uinput" "input" ];
     packages = with pkgs; [];
   };
+
+  boot.kernelModules = [ "uinput" ];
+  services.udev.extraRules = ''
+    KERNEL=="uinput", GROUP="uinput", MODE="0660"
+  '';
 
   security.pam.services.swaylock = {};
 

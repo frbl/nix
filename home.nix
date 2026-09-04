@@ -103,7 +103,8 @@ in
     # Keyboard tools
     kmonad
     #autokey
-    espanso
+    espanso-wayland
+    ydotool
 
     asciinema
 
@@ -314,6 +315,7 @@ in
     gemini-cli
     ollama
     opencode
+    whisper-ctranslate2
     #opendesign
 
     # i3
@@ -387,6 +389,7 @@ in
   home.file.".agignore".source = ./config/raw/agignore;
   home.file.".compton.conf".source = ./config/raw/compton.conf;
   home.file.".config/sway".source = ./config/raw/sway;
+  home.file.".config/mako/config".source = ./config/raw/mako;
   home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ./config/raw/waybar;
   home.file.".config/rofi".source = ./config/raw/rofi;
   home.file.".conkyrc".source = ./config/raw/conkyrc;
@@ -400,7 +403,6 @@ in
   home.file.".Rprofile".source = ./config/raw/Rprofile;
   home.file.".config/xfce4/terminal/terminalrc".source = ./config/raw/xfce_terminal;
   home.file.".config/zathura/zathurarc".source = ./config/raw/zathurarc;
-  home.file.".config/Thunar/thunarrc".source = ./config/raw/thunarrc;
   home.file.".config/kmonad/keyboard.kbd".source = ./config/raw/kmonad;
   home.file.".config/espanso/match/base.yml".source = ./config/raw/espanso.yml;
   home.file.".claude/settings.json".source = ./config/raw/claude-settings.json;
@@ -411,6 +413,33 @@ in
   home.file.".bin".source = ./config/raw/bin;
   home.file."Wallpapers".source = ./config/raw/wallpapers;
 
+  systemd.user.services.ydotoold = {
+    Unit = {
+      Description = "ydotool daemon for Wayland input injection";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.ydotool}/bin/ydotoold";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
+  };
+
+  systemd.user.services.espanso = {
+    Unit = {
+      Description = "Espanso text expander";
+      After = [ "graphical-session.target" "ydotoold.service" ];
+      PartOf = [ "graphical-session.target" ];
+      Requires = [ "ydotoold.service" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.espanso-wayland}/bin/espanso daemon";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
+  };
+
   systemd.user.services.batsignal = {
     Unit = {
       Description = "Battery level notification daemon";
@@ -418,7 +447,7 @@ in
       PartOf = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.batsignal}/bin/batsignal -w 20 -c 10 -d 5 -f 99";
+      ExecStart = "${pkgs.batsignal}/bin/batsignal -w 20 -c 10 -d 5 -f 99 -D /home/frbl/.bin/battery-critical";
       Restart = "on-failure";
     };
     Install.WantedBy = [ "graphical-session.target" ];

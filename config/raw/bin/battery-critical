@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+notify-send -u critical -a "Battery" "Battery Critical (5%)" "Plug in your charger RIGHT NOW!"
+swaymsg exec "foot --title=battery-warning /home/frbl/.bin/battery-warning-dialog"

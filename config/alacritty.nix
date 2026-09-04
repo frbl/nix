@@ -7,6 +7,7 @@
           foreground = "0xffffff";
         };
       };
+      window.padding = { x = 5; y = 5; };
       font = {
         size = 12.0;
         normal = {
