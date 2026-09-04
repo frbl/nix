@@ -413,6 +413,15 @@ in
   home.file.".bin".source = ./config/raw/bin;
   home.file."Wallpapers".source = ./config/raw/wallpapers;
 
+  systemd.user.targets.sway-session = {
+    Unit = {
+      Description = "Sway compositor session";
+      BindsTo = [ "graphical-session.target" ];
+      Wants = [ "graphical-session-pre.target" ];
+      After = [ "graphical-session-pre.target" ];
+    };
+  };
+
   systemd.user.services.ydotoold = {
     Unit = {
       Description = "ydotool daemon for Wayland input injection";

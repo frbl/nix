@@ -193,6 +193,7 @@ exec ~/.bin/swaywall
 
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DBUS_SESSION_BUS_ADDRESS XCURSOR_THEME XCURSOR_SIZE
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE DBUS_SESSION_BUS_ADDRESS XCURSOR_THEME XCURSOR_SIZE
+exec systemctl --user start sway-session.target
 
 # Idle / lock
 exec_always pkill -x swayidle; swayidle -w \
