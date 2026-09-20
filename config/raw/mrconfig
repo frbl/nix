@@ -286,6 +286,9 @@ checkout = git clone "git@gitlab.com:researchable/projects/ggs/airflow-dags.git"
 [Workspace/researchable/general/projects/vitaal/base-frontend]
 checkout = git clone "git@gitlab.com:researchable/projects/vitaal/base-frontend.git"
 
+[Workspace/researchable/general/projects/vitaal/base-backend]
+checkout = git clone "git@gitlab.com:researchable/projects/vitaal/base-backend.git"
+
 [Workspace/researchable/general/templates/gitlab/semantic-release]
 checkout = git clone "git@gitlab.com:researchable/general/templates/gitlab/semantic-release.git"
 

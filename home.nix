@@ -86,6 +86,7 @@ in
     pdf-sign
     signaturepdf
     masterpdfeditor4
+    xournalpp
 
     gettext
     #tools
@@ -151,7 +152,7 @@ in
     # General
     openssl
     pandoc
-    flameshot # screenshot tool
+    #flameshot # screenshot tool
     audacity # audio tool
 
     # npm
@@ -219,11 +220,7 @@ in
     yq
     jq
     alacritty
-    #docker
-    #docker-compose
-
-    # Usespace docker via podman
-    #podman
+    docker-compose
 
     minikube
     k9s
@@ -328,6 +325,7 @@ in
     swaybg
     swayidle
     swaylock
+    sway-contrib.grimshot # screenshot tool
     waybar
     mako
     foot
@@ -406,6 +404,7 @@ in
   home.file.".config/kmonad/keyboard.kbd".source = ./config/raw/kmonad;
   home.file.".config/espanso/match/base.yml".source = ./config/raw/espanso.yml;
   home.file.".claude/settings.json".source = ./config/raw/claude-settings.json;
+  home.file.".claude/CLAUDE.md".source = ./config/raw/CLAUDE.md;
   home.file.".config/opencode/config.json".source = ./config/raw/opencode.json;
   home.file.".snippets/vim/UltiSnips".source = ./config/UltiSnips;
   home.file.".git_template".source = ./config/raw/git_template;
@@ -456,7 +455,7 @@ in
       PartOf = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.batsignal}/bin/batsignal -w 20 -c 10 -d 5 -f 99 -D /home/frbl/.bin/battery-critical";
+      ExecStart = "${pkgs.batsignal}/bin/batsignal -w 20 -c 10 -d 5 -D /home/frbl/.bin/battery-critical";
       Restart = "on-failure";
     };
     Install.WantedBy = [ "graphical-session.target" ];

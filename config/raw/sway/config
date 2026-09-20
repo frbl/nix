@@ -33,8 +33,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # Screenshots
-bindsym Ctrl+Shift+3 exec flameshot full
-bindsym Ctrl+Shift+4 exec flameshot gui
+bindsym Ctrl+Shift+3 exec grimshot copy screen 
+bindsym Ctrl+Shift+4 exec grimshot copy area 
 
 bindsym $mod+t sticky toggle
 

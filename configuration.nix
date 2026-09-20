@@ -50,14 +50,7 @@
     };
   };
 
-  # Enable rootless (user-mode) docker only
-  virtualisation.docker = {
-    enable = false;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
+  virtualisation.docker.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -87,7 +80,7 @@
   users.users."frbl" = {
     isNormalUser = true;
     description = "Frank Blaauw";
-    extraGroups = [ "networkmanager" "wheel" "video" "uinput" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "uinput" "input" "docker" ];
     packages = with pkgs; [];
   };
 
@@ -118,6 +111,21 @@
   # Requires DSDT override or BIOS fix before any camera driver will work
 
   services.tailscale.enable = true;
+
+  # Enable printing
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
+  };
 
   # Local LLM
   services.ollama = {

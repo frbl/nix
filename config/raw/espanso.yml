@@ -42,4 +42,9 @@ matches:
 
   - trigger: ":color"
     replace: "#00B1E9"
-    
+
+  - trigger: ":address"
+    replace: "Zernikelaan 14"
+
+  - trigger: ":pc"
+    replace: "9747AA"
